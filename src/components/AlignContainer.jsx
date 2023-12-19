@@ -8,8 +8,7 @@ import styled from 'styled-components';
  *
  * @description
  * - 내부 요소를 좌우 여백을 일괄로 주어, 가운데로 모아주는 Container 입니다.
- * - height
- *
+ * - 상하 여백은 부여하지 않았습니다.
  */
 const AlignContainer = ({
 	$bg_color,
