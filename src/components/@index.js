@@ -1,3 +1,4 @@
-import AlignContainer from './AlignContainer';
+import AlignContainer from './align_container';
+import Layout from './layout';
 
-export { AlignContainer };
+export { AlignContainer, Layout };
