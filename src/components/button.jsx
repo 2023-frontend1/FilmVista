@@ -1,3 +1,4 @@
+import { color, fontSize } from '../styles/themes/@index';
 import styled from 'styled-components';
 
 /**
@@ -12,9 +13,18 @@ import styled from 'styled-components';
  *
  *
  */
-const Button = ({ children, $color, $bgColor, $radious, ...rest }) => {
+const Button = ({
+	children,
+	$color = color.black[0],
+	$bgColor = color.yellow[900],
+	$radious = '1rem',
+	$fontSize = fontSize.medium,
+	...rest
+}) => {
 	return (
-		<S.But_Button {...{ children, $color, $bgColor, $radious, ...rest }}>
+		<S.But_Button
+			{...{ children, $color, $bgColor, $radious, $fontSize, ...rest }}
+		>
 			{children}
 		</S.But_Button>
 	);
@@ -22,9 +32,11 @@ const Button = ({ children, $color, $bgColor, $radious, ...rest }) => {
 export default Button;
 
 const But_Button = styled.button`
+	padding: 1rem 2rem;
+	font-size: ${({ $fontSize }) => $fontSize};
 	color: ${({ $color }) => $color};
 	background-color: ${({ $bgColor }) => $bgColor};
-	border-radius: ${({ $$radious }) => $$radious};
+	border-radius: ${({ $radious }) => $radious};
 	&:hover {
 		cursor: pointer;
 		transform: scale(1.05);
