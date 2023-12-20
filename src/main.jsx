@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
+import { Layout } from './components/@index.js';
 import GlobalStyles from './styles/global_styles.jsx';
 
 const queryClient = new QueryClient({
@@ -14,12 +16,21 @@ const queryClient = new QueryClient({
 	},
 });
 
+const router = createBrowserRouter([
+	{
+		path: '',
+		element: <Layout />,
+		children: [{ path: '/', element: <App /> }],
+	},
+]);
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<QueryClientProvider client={queryClient}>
 			<GlobalStyles />
+			<RouterProvider router={router} />
 			<ReactQueryDevtools initialIsOpen={false} />
-			<App />
 		</QueryClientProvider>
 	</React.StrictMode>
 );
