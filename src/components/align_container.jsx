@@ -29,7 +29,7 @@ const Div_Container = styled.div`
 	width: 100%;
 	height: fit-content;
 	padding: 0 ${({ $compressibility }) => $compressibility};
-	background-color: ${({ $bg_color }) => $bg_color};
+	background-color: ${({ $bgColor }) => $bgColor};
 `;
 
 const S = {
