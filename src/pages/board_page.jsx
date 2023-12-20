@@ -1,7 +1,13 @@
+import InfiniteScroll from 'react-infinite-scroller';
+import { useInfiniteQuery } from 'react-query';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import PosterCard from './components/poster_card';
-import { flexAlign, fontSize, fontWeight } from '../styles/themes/@index';
 import AlignContainer from '../components/align_container';
+import movies from '../constants/react_query_key';
+import moviesFetchFn from '../libs/axios/movie';
+import { fontSize, fontWeight } from '../styles/themes/@index';
+import PostCardList from './components/post_card_list';
+
 /**
  * /**
  * @component
@@ -14,31 +20,29 @@ import AlignContainer from '../components/align_container';
  *
  */
 const BoardPage = () => {
+	const { sortMethod } = useParams();
+	const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteQuery({
+		queryKey: movies[sortMethod],
+		queryFn: ({ pageParam = 1 }) => moviesFetchFn[sortMethod](pageParam),
+		getNextPageParam: (lastPage, allPosts) => {
+			return lastPage.page !== allPosts[0].total_pages && lastPage.page + 1;
+		},
+	});
+
+	if (isLoading) {
+		return <div>🖕</div>;
+	}
+
 	return (
 		<AlignContainer $compressibility="5%">
-			<S.H1_CatagoryText>인기영화(catagory)</S.H1_CatagoryText>{' '}
-			{/*추후에 catagory라는 변수로 만들어 어떤 페이지인지 보여줄 예정 */}
-			<S.Div_CardWrapper>
-				<PosterCard />
-				<PosterCard />
-				<PosterCard />
-				<PosterCard />
-				<PosterCard />
-				<PosterCard />
-				<PosterCard />
-				<PosterCard />
-				<PosterCard />
-				<PosterCard />
-			</S.Div_CardWrapper>
+			<S.H1_CatagoryText>인기영화(catagory)</S.H1_CatagoryText>
+			<InfiniteScroll hasMore={hasNextPage} loadMore={() => fetchNextPage()}>
+				<PostCardList data={data} />
+			</InfiniteScroll>
 		</AlignContainer>
 	);
 };
 export default BoardPage;
-const Div_CardWrapper = styled.div`
-	position: absolute;
-	${flexAlign.flexStart}
-	flex-wrap: wrap;
-`;
 
 const H1_CatagoryText = styled.h1`
 	left: 5rem;
@@ -48,6 +52,5 @@ const H1_CatagoryText = styled.h1`
 	font-weight: ${fontWeight.bold};
 `;
 const S = {
-	Div_CardWrapper,
 	H1_CatagoryText,
 };
