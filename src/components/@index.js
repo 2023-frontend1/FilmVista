@@ -1,3 +1,4 @@
 import AlignContainer from './AlignContainer';
+import Button from './button';
 
-export { AlignContainer };
+export { AlignContainer, Button };
