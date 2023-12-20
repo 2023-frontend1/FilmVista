@@ -8,17 +8,16 @@ import styled from 'styled-components';
  *
  * @description
  * - 내부 요소를 좌우 여백을 일괄로 주어, 가운데로 모아주는 Container 입니다.
- * - height
- *
+ * - 상하 여백은 부여하지 않았습니다.
  */
 const AlignContainer = ({
-	$bg_color,
+	$bgColor,
 	$compressibility = '25%',
 	children,
 	...rest
 }) => {
 	return (
-		<S.Div_Container $bg_color $compressibility {...rest}>
+		<S.Div_Container {...{ $bgColor, $compressibility, ...rest }}>
 			{children}
 		</S.Div_Container>
 	);
@@ -26,7 +25,7 @@ const AlignContainer = ({
 
 export default AlignContainer;
 
-const c = styled.div`
+const Div_Container = styled.div`
 	width: 100%;
 	height: fit-content;
 	padding: 0 ${({ $compressibility }) => $compressibility};
