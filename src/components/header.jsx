@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { color, flexAlign } from '../styles/themes/@index';
+import SearchArea from './search_area';
 
 /**
 
@@ -14,6 +15,7 @@ const Header = ({
 	return (
 		<S.Div_Wrapper {...{ $bgColor, $color, $borderColor }}>
 			<h3>FilmVista</h3>
+			<SearchArea />
 		</S.Div_Wrapper>
 	);
 };
@@ -32,6 +34,8 @@ const Div_Wrapper = styled.div`
 	background-color: ${({ $bgColor }) => $bgColor};
 	color: ${({ $color }) => $color};
 	border-bottom: 0.5px solid ${({ $borderColor }) => $borderColor};
+
+	${flexAlign.justifyBetween}
 
 	${flexAlign.alignCenter}
 `;
