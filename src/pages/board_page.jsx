@@ -1,6 +1,6 @@
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import AlignContainer from '../components/align_container';
 import movies from '../constants/react_query_key';
@@ -21,9 +21,11 @@ import PostCardList from './components/post_card_list';
  */
 const BoardPage = () => {
 	const { sortMethod } = useParams();
+	const [searchParam] = useSearchParams();
 	const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteQuery({
 		queryKey: movies[sortMethod],
-		queryFn: ({ pageParam = 1 }) => moviesFetchFn[sortMethod](pageParam),
+		queryFn: ({ pageParam = 1 }) =>
+			moviesFetchFn[sortMethod](pageParam, searchParam.get('subject')),
 		getNextPageParam: (lastPage, allPosts) => {
 			return lastPage.page !== allPosts[0].total_pages && lastPage.page + 1;
 		},
