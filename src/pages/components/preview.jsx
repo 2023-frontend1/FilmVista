@@ -8,6 +8,7 @@ import {
 } from '../../styles/themes/@index';
 
 const Preview = ({
+	movieId,
 	title,
 	description = '🚨 미리보기가 없습니다.',
 	popularity,
@@ -15,6 +16,7 @@ const Preview = ({
 	voteCount,
 	releaseDate,
 	posterPath,
+	onClickDetailBtn,
 	$isReverse,
 	$bgColor,
 }) => {
@@ -31,7 +33,9 @@ const Preview = ({
 						</S.P_AdditionalInfo>
 						<S.P_AdditionalInfo>📅 개봉일 : {releaseDate}</S.P_AdditionalInfo>
 					</S.Sec_AdditionalInfoContainer>
-					<Button>자세히 보러가기 〉</Button>
+					<Button onClick={() => onClickDetailBtn(movieId)}>
+						자세히 보러가기 〉
+					</Button>
 				</S.Div_TextArea>
 				<S.Div_TextArea>
 					<Poster src={posterPath} $width="80%" />
