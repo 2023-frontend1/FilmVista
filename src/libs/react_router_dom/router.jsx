@@ -1,12 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../../components/layout';
-import BoardPage from '../../pages/board_page';
+import { BoardPage, HomePage } from '../../pages/@index';
 
 const router = createBrowserRouter([
 	{
 		path: '',
 		element: <Layout />,
 		children: [
+			{
+				path: '/home',
+				element: <HomePage />,
+			},
 			{
 				path: '/:sortMethod',
 				element: <BoardPage />,
