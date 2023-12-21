@@ -53,12 +53,13 @@ const getMovieOne = async (movieId) => {
 	return response.data;
 };
 /**
+ * @param {number} page 페이지 번호
  * @param {string} query 검색키워드
  * @description query 값을 기준으로, 관련 영화 목록을 가져옵니다.
  */
-const getMoviesSearching = async (query) => {
+const getMoviesSearching = async (page, query) => {
 	const response = await axiosMovieInstance.get('/search/movie', {
-		params: { query },
+		params: { page, query },
 	});
 	return response.data;
 };
