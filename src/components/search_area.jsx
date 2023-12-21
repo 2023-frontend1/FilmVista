@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, flexAlign } from '../styles/themes/@index';
+import { color, flexAlign, fontWeight } from '../styles/themes/@index';
 import Button from './button';
 /**
 
@@ -12,12 +12,12 @@ const SearchArea = () => {
 			<S.For_Form>
 				<S.Inp_Input
 					placeholder="찾고싶은 영화를 검색해주세요 🔍"
-					name="title"
+					name="subject"
 				></S.Inp_Input>
 				<Button
 					$bgColor={`${color.gray[900]}`}
 					$color={`${color.green[500]}`}
-					style={{ height: '4.5rem' }}
+					style={{ height: '4.5rem', fontWeight: '800' }}
 				>
 					검색
 				</Button>
@@ -39,6 +39,7 @@ const Inp_Input = styled.input`
 	border-radius: 3rem;
 	margin-right: 2rem;
 	padding: 1rem;
+	font-weight: ${fontWeight.bold};
 `;
 const S = {
 	Div_Container,
