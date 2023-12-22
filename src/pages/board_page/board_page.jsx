@@ -2,12 +2,17 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
 import { useParams, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
-import AlignContainer from '../components/align_container';
-import movies from '../constants/query_keys/movies';
-import pageNames from '../constants/texts/page_names';
-import moviesFetchFn from '../libs/axios/movie';
-import { color, fontSize, fontWeight } from '../styles/themes/@index';
-import PostCardList from './components/post_card_list';
+import { AlignContainer } from '../../components/@index';
+import movies from '../../constants/query_keys/movies';
+import pageNames from '../../constants/texts/page_names';
+import moviesFetchFn from '../../libs/axios/movie';
+import {
+	color,
+	flexAlign,
+	fontSize,
+	fontWeight,
+} from '../../styles/themes/@index';
+import { PostCardList, SkeletonList } from './components/@index';
 
 /**
  * /**
@@ -31,20 +36,26 @@ const BoardPage = () => {
 			return lastPage.page !== allPosts[0].total_pages && lastPage.page + 1;
 		},
 	});
-
-	if (isLoading) {
-		return <div>🖕</div>;
-	}
-
 	return (
 		<>
 			<AlignContainer $compressibility="10%">
 				<br />
 				<S.H1_CategoryText>{pageNames[sortMethod]}</S.H1_CategoryText>
 				<br />
-				<InfiniteScroll hasMore={hasNextPage} loadMore={() => fetchNextPage()}>
-					<PostCardList data={data} />
-				</InfiniteScroll>
+				<S.Div_ListContainer>
+					{isLoading ? (
+						<SkeletonList />
+					) : (
+						<InfiniteScroll
+							hasMore={hasNextPage}
+							loadMore={() => fetchNextPage()}
+						>
+							<S.Div_ListContainer>
+								<PostCardList data={data} />
+							</S.Div_ListContainer>
+						</InfiniteScroll>
+					)}
+				</S.Div_ListContainer>
 			</AlignContainer>
 		</>
 	);
@@ -58,6 +69,14 @@ const H1_CategoryText = styled.h1`
 	font-weight: ${fontWeight.bold};
 	color: ${color.gray[900]};
 `;
+
+const Div_ListContainer = styled.div`
+	${flexAlign.flexStart}
+	flex-wrap: wrap;
+	gap: 5rem;
+`;
+
 const S = {
 	H1_CategoryText,
+	Div_ListContainer,
 };
