@@ -21,7 +21,7 @@ const PreviewList = ({ data }) => {
 							posterPath={
 								import.meta.env.VITE_APP_MOVIES_API_IMG_URL + poster.poster_path
 							}
-							onClickDetailBtn={() => navigate(`/detail/${movieId}`)}
+							onClickDetailBtn={() => navigate(`/detail/${poster.id}`)}
 							$bgColor={idx % 2 == 0 ? color.black[200] : color.black[100]}
 							$isReverse={idx % 2 == 0}
 						/>

@@ -13,6 +13,10 @@ const DetailPage = () => {
 		queryFn: () => moviesFetchFn.detail(movieId),
 	});
 
+	if (isLoading) {
+		return <div> 불러온 데이터가 없습니다.</div>;
+	}
+
 	return (
 		<S.Div_MainWrapper>
 			<S.Img_BackgroundImg

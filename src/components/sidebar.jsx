@@ -21,9 +21,10 @@ const SideBar = ({
 
 	return (
 		<S.Ul_CategoryList {...{ $bgColor, $color, $borderColor }}>
-			{Object.entries(sidebarCategory).map((cate) => {
+			{Object.entries(sidebarCategory).map((cate, idx) => {
 				return (
 					<S.Li_Category
+						key={idx}
 						onClick={() => {
 							navigate(`/${cate[0]}`);
 						}}
