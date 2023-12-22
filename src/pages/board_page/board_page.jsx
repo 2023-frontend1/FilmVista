@@ -1,7 +1,7 @@
 import InfiniteScroll from 'react-infinite-scroller';
 import { useParams, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { AlignContainer } from '../../components/@index';
+import { AlignContainer, TopButton } from '../../components/@index';
 import pageNames from '../../constants/texts/page_names';
 import useInfiniteMovieData from '../../hooks/use-infinite-movie-data';
 import {
@@ -47,6 +47,7 @@ const BoardPage = () => {
 						>
 							<S.Div_ListContainer>
 								<PostCardList data={data} />
+								<TopButton />
 							</S.Div_ListContainer>
 						</InfiniteScroll>
 					)}
