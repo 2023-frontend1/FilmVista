@@ -1,7 +1,7 @@
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import movies from '../constants/react_query_key';
+import movies from '../constants/query_keys/movies';
 import moviesFetchFn from '../libs/axios/movie';
 import { color } from '../styles/themes/@index';
 import Preview from './components/preview';
