@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { fontSize, fontWeight } from './themes/@index';
+import { color, fontSize, fontWeight } from './themes/@index';
 const GlobalStyles = createGlobalStyle`
     * {
         margin: 0;
@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
     html {
         font-size: 62.5%;
         font-weight: ${fontWeight.regular};
+        background-color: ${color.black[100]};
     }
 
     ul, li {

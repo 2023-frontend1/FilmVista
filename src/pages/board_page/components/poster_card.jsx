@@ -52,7 +52,7 @@ export default PosterCard;
 const Div_MainWrapper = styled.div`
 	${flexAlign.alignCenter}
 	${flexAlign.justifyBetween};
-	width: 35rem;
+	width: 36rem;
 	height: 22rem;
 	color: ${color.gray[900]};
 	cursor: pointer;
@@ -66,24 +66,20 @@ const Div_InfoWrapper = styled.div`
 `;
 
 const H1_Title = styled.h3`
-	height: 25%;
 	word-break: keep-all;
-
 	text-overflow: ellipsis;
 	overflow: hidden;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
+	-webkit-line-clamp: 3;
 `;
 
 const P_Content = styled.p`
-	height: 39%;
-
 	overflow: hidden;
 	text-overflow: ellipsis;
 	word-break: break-all;
 	display: -webkit-box;
-	-webkit-line-clamp: 4;
+	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
 `;
 const P_AdditionalInfo = styled.p`

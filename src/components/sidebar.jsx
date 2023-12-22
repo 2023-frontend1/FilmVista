@@ -45,7 +45,7 @@ const Ul_CategoryList = styled.ul`
 	top: 0%;
 	z-index: 10000;
 
-	width: 100px;
+	width: 12rem;
 	height: 100vh;
 
 	color: ${({ $color }) => $color};

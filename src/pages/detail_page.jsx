@@ -86,7 +86,7 @@ const Div_ContentContainer = styled.div`
 
 const Div_TextArea = styled.div`
 	color: ${color.gray[900]};
-	width: 40rem;
+	width: 60rem;
 	height: 53rem;
 	${flexAlign.directionColumn}
 	word-break: keep-all;
@@ -94,14 +94,14 @@ const Div_TextArea = styled.div`
 `;
 
 const H1_Title = styled.h1`
-	height: 20%;
+	height: 25%;
 `;
 const P_Overview = styled.p`
-	height: 25%;
+	height: 70%;
 `;
 
 const Sec_AdditionalInfo = styled.section`
-	height: 10%;
+	height: 30%;
 `;
 
 const S = {

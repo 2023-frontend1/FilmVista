@@ -1,23 +1,21 @@
 import InfiniteScroll from 'react-infinite-scroller';
-import { useInfiniteQuery } from 'react-query';
-import movies from '../../constants/query_keys/movies';
-import moviesFetchFn from '../../libs/axios/movie';
+import useInfiniteMovieData from '../../hooks/use-infinite-movie-data';
 import PreviewList from './components/preview_list';
+import TopButton from '../../components/top_button';
 
 const HomePage = () => {
-	const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteQuery({
-		queryKey: movies.popular,
-		queryFn: ({ pageParam = 1 }) => moviesFetchFn.popular(pageParam),
-		getNextPageParam: (lastPage, allPosts) => {
-			return lastPage.page !== allPosts[0].total_pages && lastPage.page + 1;
-		},
+	const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteMovieData({
+		sortMethod: 'popular',
+		paramsArr: [],
 	});
+
 	if (isLoading) {
 		return <div>로딩 중.. 쿠쿠루빙뽕🤪</div>;
 	}
 	return (
 		<InfiniteScroll hasMore={hasNextPage} loadMore={() => fetchNextPage()}>
 			<PreviewList data={data} />
+			<TopButton />
 		</InfiniteScroll>
 	);
 };
