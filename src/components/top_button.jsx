@@ -2,7 +2,18 @@ import styled from 'styled-components';
 import { color, fontSize, fontWeight } from '../styles/themes/@index';
 
 const TopButton = () => {
-	return <S.Button onClick={() => window.scrollTo(0, 0)}>top</S.Button>;
+	return (
+		<S.Button
+			onClick={() =>
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth',
+				})
+			}
+		>
+			top
+		</S.Button>
+	);
 };
 export default TopButton;
 
