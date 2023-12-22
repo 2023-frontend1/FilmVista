@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { AlignContainer, Button, Poster } from '../../components/@index';
+import { AlignContainer, Button, Poster } from '../../../components/@index';
 import {
 	color,
 	flexAlign,
 	fontSize,
 	fontWeight,
-} from '../../styles/themes/@index';
+} from '../../../styles/themes/@index';
 
 const Preview = ({
 	movieId,

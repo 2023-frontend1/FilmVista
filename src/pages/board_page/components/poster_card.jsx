@@ -1,11 +1,11 @@
 import styled from 'styled-components';
+import Poster from '../../../components/poster';
 import {
 	color,
 	flexAlign,
 	fontSize,
 	fontWeight,
-} from '../styles/themes/@index';
-import Poster from './poster';
+} from '../../../styles/themes/@index';
 /**
  * /**
  * @component

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { PosterCard } from '../../components/@index';
-import { flexAlign } from '../../styles/themes/@index';
+import { flexAlign } from '../../../styles/themes/@index';
+import PosterCard from './poster_card';
 const PostCardList = ({ data }) => {
 	const navigate = useNavigate();
 
