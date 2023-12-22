@@ -1,11 +1,9 @@
 import InfiniteScroll from 'react-infinite-scroller';
-import { useInfiniteQuery } from 'react-query';
 import { useParams, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { AlignContainer } from '../../components/@index';
-import movies from '../../constants/query_keys/movies';
 import pageNames from '../../constants/texts/page_names';
-import moviesFetchFn from '../../libs/axios/movie';
+import useInfiniteMovieData from '../../hooks/use-infinite-movie-data';
 import {
 	color,
 	flexAlign,
@@ -28,13 +26,10 @@ import { PostCardList, SkeletonList } from './components/@index';
 const BoardPage = () => {
 	const { sortMethod } = useParams();
 	const [searchParam] = useSearchParams();
-	const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteQuery({
-		queryKey: movies[sortMethod],
-		queryFn: ({ pageParam = 1 }) =>
-			moviesFetchFn[sortMethod](pageParam, searchParam.get('subject')),
-		getNextPageParam: (lastPage, allPosts) => {
-			return lastPage.page !== allPosts[0].total_pages && lastPage.page + 1;
-		},
+
+	const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteMovieData({
+		sortMethod,
+		paramsArr: [searchParam.get('subject')],
 	});
 	return (
 		<>
