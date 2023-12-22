@@ -1,5 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { color, flexAlign } from '../styles/themes/@index';
+import sidebarCategory from '../constants/texts/sidebar_category';
+import {
+	color,
+	flexAlign,
+	fontSize,
+	fontWeight,
+} from '../styles/themes/@index';
 
 /**
  * @description
@@ -10,18 +17,28 @@ const SideBar = ({
 	$color = color.gray[900],
 	$borderColor = color.black[900],
 }) => {
+	const navigate = useNavigate();
+
 	return (
-		<Div_Wrapper {...{ $bgColor, $color, $borderColor }}>
-			<div>1</div>
-			<div>2</div>
-			<div>3</div>
-		</Div_Wrapper>
+		<S.Ul_CategoryList {...{ $bgColor, $color, $borderColor }}>
+			{Object.entries(sidebarCategory).map((cate) => {
+				return (
+					<S.Li_Category
+						onClick={() => {
+							navigate(`/${cate[0]}`);
+						}}
+					>
+						{cate[1]}
+					</S.Li_Category>
+				);
+			})}
+		</S.Ul_CategoryList>
 	);
 };
 
 export default SideBar;
 
-const Div_Wrapper = styled.div`
+const Ul_CategoryList = styled.ul`
 	position: fixed;
 	left: 0%;
 	top: 0%;
@@ -39,5 +56,22 @@ const Div_Wrapper = styled.div`
 
   padding: 85px  0;
 
-	gap: 1rem;
+	gap: 3rem;
 `;
+
+const Li_Category = styled.li`
+	font-size: ${fontSize.tiny};
+	font-weight: ${fontWeight.light};
+	width: 80%;
+	padding: 1rem;
+	border-radius: 1rem;
+	cursor: pointer;
+	&:hover {
+		background-color: ${color.black[300]};
+	}
+`;
+
+const S = {
+	Ul_CategoryList,
+	Li_Category,
+};
