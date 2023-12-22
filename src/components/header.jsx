@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { color, flexAlign } from '../styles/themes/@index';
 import SearchArea from './search_area';
@@ -12,9 +13,16 @@ const Header = ({
 	$color = color.gray[900],
 	$borderColor = color.black[900],
 }) => {
+	const navigate = useNavigate();
 	return (
 		<S.Div_Wrapper {...{ $bgColor, $color, $borderColor }}>
-			<h3>FilmVista</h3>
+			<Div_WebServiceName
+				onClick={() => {
+					navigate('/');
+				}}
+			>
+				FilmVista
+			</Div_WebServiceName>
 			<SearchArea />
 		</S.Div_Wrapper>
 	);
@@ -36,8 +44,11 @@ const Div_Wrapper = styled.div`
 	border-bottom: 0.5px solid ${({ $borderColor }) => $borderColor};
 
 	${flexAlign.justifyBetween}
-
 	${flexAlign.alignCenter}
+`;
+
+const Div_WebServiceName = styled.h3`
+	cursor: pointer;
 `;
 
 const S = { Div_Wrapper };
