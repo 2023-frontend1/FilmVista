@@ -6,7 +6,20 @@ const PostCardList = ({ data }) => {
 		<S.Div_CardWrapper>
 			{data.pages.map((page) => {
 				return page.results.map((poster) => {
-					return <PosterCard key={poster.id} />;
+					return (
+						<PosterCard
+							key={poster.id}
+							posterPath={
+								import.meta.env.VITE_APP_MOVIES_API_IMG_URL + poster.poster_path
+							}
+							title={poster.title}
+							overview={poster.overview ? poster.overview : undefined}
+							popularity={poster.popularity}
+							voteAverage={poster.vote_average}
+							voteCount={poster.vote_count}
+							releaseDate={poster.release_date}
+						/>
+					);
 				});
 			})}
 		</S.Div_CardWrapper>
@@ -16,9 +29,9 @@ const PostCardList = ({ data }) => {
 export default PostCardList;
 
 const Div_CardWrapper = styled.div`
-	/* position: absolute;*/
 	${flexAlign.flexStart}
 	flex-wrap: wrap;
+	gap: 5rem;
 `;
 
 const S = {
