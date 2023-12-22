@@ -3,7 +3,7 @@ import { useInfiniteQuery } from 'react-query';
 import { useParams, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import AlignContainer from '../components/align_container';
-import movies from '../constants/react_query_key';
+import movies from '../constants/query_keys/movies';
 import moviesFetchFn from '../libs/axios/movie';
 import { fontSize, fontWeight } from '../styles/themes/@index';
 import PostCardList from './components/post_card_list';

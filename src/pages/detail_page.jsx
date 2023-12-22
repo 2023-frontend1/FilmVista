@@ -1,15 +1,15 @@
+import { useQuery } from 'react-query';
+import { useParams } from 'react-router';
 import styled from 'styled-components';
 import { AlignContainer, Poster } from '../components/@index';
+import movies from '../constants/query_keys/movies';
+import moviesFetchFn from '../libs/axios/movie';
 import {
+	color,
 	flexAlign,
 	fontSize,
 	fontWeight,
-	color,
 } from '../styles/themes/@index';
-import { useQuery } from 'react-query';
-import { useParams } from 'react-router';
-import movies from '../constants/react_query_key';
-import moviesFetchFn from '../libs/axios/movie';
 
 const DetailPage = () => {
 	const { movieId } = useParams();
