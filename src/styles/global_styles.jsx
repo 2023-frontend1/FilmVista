@@ -18,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     h1 {
-    font-size: ${fontSize.big};
+    font-size: ${fontSize.huge};
         font-weight: ${fontWeight.bold};
     }
 

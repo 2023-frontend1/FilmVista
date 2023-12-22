@@ -1,12 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { flexAlign } from '../../../styles/themes/@index';
 import PosterCard from './poster_card';
 const PostCardList = ({ data }) => {
 	const navigate = useNavigate();
 
 	return (
-		<S.Div_CardWrapper>
+		<>
 			{data.pages.map((page) => {
 				return page.results.map((poster) => {
 					return (
@@ -28,18 +26,8 @@ const PostCardList = ({ data }) => {
 					);
 				});
 			})}
-		</S.Div_CardWrapper>
+		</>
 	);
 };
 
 export default PostCardList;
-
-const Div_CardWrapper = styled.div`
-	${flexAlign.flexStart}
-	flex-wrap: wrap;
-	gap: 5rem;
-`;
-
-const S = {
-	Div_CardWrapper,
-};
