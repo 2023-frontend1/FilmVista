@@ -4,8 +4,9 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import AlignContainer from '../components/align_container';
 import movies from '../constants/query_keys/movies';
+import pageNames from '../constants/texts/page_names';
 import moviesFetchFn from '../libs/axios/movie';
-import { fontSize, fontWeight } from '../styles/themes/@index';
+import { color, fontSize, fontWeight } from '../styles/themes/@index';
 import PostCardList from './components/post_card_list';
 
 /**
@@ -36,23 +37,27 @@ const BoardPage = () => {
 	}
 
 	return (
-		<AlignContainer $compressibility="5%">
-			<S.H1_CatagoryText>인기영화(catagory)</S.H1_CatagoryText>
-			<InfiniteScroll hasMore={hasNextPage} loadMore={() => fetchNextPage()}>
-				<PostCardList data={data} />
-			</InfiniteScroll>
-		</AlignContainer>
+		<>
+			<AlignContainer $compressibility="10%">
+				<br />
+				<S.H1_CategoryText>{pageNames[sortMethod]}</S.H1_CategoryText>
+				<br />
+				<InfiniteScroll hasMore={hasNextPage} loadMore={() => fetchNextPage()}>
+					<PostCardList data={data} />
+				</InfiniteScroll>
+			</AlignContainer>
+		</>
 	);
 };
 export default BoardPage;
 
-const H1_CatagoryText = styled.h1`
+const H1_CategoryText = styled.h1`
 	left: 5rem;
 	top: 4rem;
-	position: relative;
 	font-size: ${fontSize.big};
 	font-weight: ${fontWeight.bold};
+	color: ${color.gray[900]};
 `;
 const S = {
-	H1_CatagoryText,
+	H1_CategoryText,
 };

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import color from '../styles/themes/color';
 
 /**
  * @component
@@ -11,7 +12,7 @@ import styled from 'styled-components';
  * - 상하 여백은 부여하지 않았습니다.
  */
 const AlignContainer = ({
-	$bgColor,
+	$bgColor = color.black[100],
 	$compressibility = '25%',
 	children,
 	...rest
