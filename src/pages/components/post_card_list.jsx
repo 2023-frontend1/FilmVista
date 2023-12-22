@@ -1,7 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { PosterCard } from '../../components/@index';
 import { flexAlign } from '../../styles/themes/@index';
 const PostCardList = ({ data }) => {
+	const navigate = useNavigate();
+
 	return (
 		<S.Div_CardWrapper>
 			{data.pages.map((page) => {
@@ -18,6 +21,9 @@ const PostCardList = ({ data }) => {
 							voteAverage={poster.vote_average}
 							voteCount={poster.vote_count}
 							releaseDate={poster.release_date}
+							onClick={() => {
+								navigate(`/detail/${poster.id}`);
+							}}
 						/>
 					);
 				});

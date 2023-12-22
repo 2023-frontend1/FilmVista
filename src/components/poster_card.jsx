@@ -30,9 +30,10 @@ const PosterCard = ({
 	voteAverage,
 	voteCount,
 	releaseDate,
+	...rest
 }) => {
 	return (
-		<S.Div_MainWrapper>
+		<S.Div_MainWrapper {...rest}>
 			<Poster src={posterPath} $width="16rem" />
 			<S.Div_InfoWrapper>
 				<S.H1_Title>{title}</S.H1_Title>
