@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { color, flexAlign } from '../styles/themes/@index';
+import { color, flexAlign } from '../../styles/themes/@index';
 import SearchArea from './search_area';
 
 /**

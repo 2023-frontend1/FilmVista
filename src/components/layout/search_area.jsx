@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { color, flexAlign, fontWeight } from '../styles/themes/@index';
-import Button from './button';
+import { color, flexAlign, fontWeight } from '../../styles/themes/@index';
+import Button from '../button';
 /**
 
  * @description

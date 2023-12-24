@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import sidebarCategory from '../constants/texts/sidebar_category';
+import sidebarCategory from '../../constants/texts/sidebar_category';
 import {
 	color,
 	flexAlign,
 	fontSize,
 	fontWeight,
-} from '../styles/themes/@index';
+} from '../../styles/themes/@index';
 
 /**
  * @description
