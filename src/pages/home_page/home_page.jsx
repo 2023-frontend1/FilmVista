@@ -1,7 +1,6 @@
 import InfiniteScroll from 'react-infinite-scroller';
-import TopButton from '../../components/top_button';
+import { InfiniteList, Preview, TopButton } from '../../components/@index';
 import useInfiniteMovieData from '../../hooks/use_infinite_movie_data';
-import PreviewList from './components/preview_list';
 
 const HomePage = () => {
 	const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteMovieData({
@@ -14,7 +13,7 @@ const HomePage = () => {
 	}
 	return (
 		<InfiniteScroll hasMore={hasNextPage} loadMore={() => fetchNextPage()}>
-			<PreviewList data={data} />
+			<InfiniteList data={data} renderComponent={Preview} />
 			<TopButton />
 		</InfiniteScroll>
 	);

@@ -1,44 +1,49 @@
 import styled from 'styled-components';
-import { AlignContainer, Button, Poster } from '../../../components/@index';
 import {
 	color,
 	flexAlign,
 	fontSize,
 	fontWeight,
 } from '../../../styles/themes/@index';
+import { AlignContainer, Button, Poster } from '../../@index';
 
 const Preview = ({
-	movieId,
+	id,
 	title,
-	description = '🚨 미리보기가 없습니다.',
+	overview,
 	popularity,
-	voteAverage,
-	voteCount,
-	releaseDate,
-	posterPath,
+	vote_average,
+	vote_count,
+	release_date,
+	poster_path,
 	onClickDetailBtn,
-	$isReverse,
-	$bgColor,
+	order,
 }) => {
 	return (
-		<AlignContainer $compressibility="15%" {...{ $bgColor }}>
-			<S.Div_BisectionArea {...{ $isReverse }}>
+		<AlignContainer
+			$compressibility="15%"
+			$bgColor={order % 2 ? color.black[100] : color.black[200]}
+		>
+			<S.Div_BisectionArea $isReverse={order % 2 === 0}>
 				<S.Div_TextArea>
 					<S.H1_Title>{title}</S.H1_Title>
-					<S.P_Description>{description}</S.P_Description>
+					<S.P_Description>{overview.length ? overview : '-'}</S.P_Description>
 					<S.Sec_AdditionalInfoContainer>
 						<S.P_AdditionalInfo>🔥 인기지수: {popularity}</S.P_AdditionalInfo>
 						<S.P_AdditionalInfo>
-							👍 평점 / 투표수 : {voteAverage} / {voteCount}
+							👍 평점 / 투표수 : {vote_average} / {vote_count}
 						</S.P_AdditionalInfo>
-						<S.P_AdditionalInfo>📅 개봉일 : {releaseDate}</S.P_AdditionalInfo>
+						<S.P_AdditionalInfo>📅 개봉일 : {release_date}</S.P_AdditionalInfo>
 					</S.Sec_AdditionalInfoContainer>
-					<Button onClick={() => onClickDetailBtn(movieId)}>
+					<Button onClick={() => onClickDetailBtn(id)}>
 						자세히 보러가기 〉
 					</Button>
 				</S.Div_TextArea>
 				<S.Div_TextArea>
-					<Poster src={posterPath} $width="80%" />
+					<Poster
+						src={import.meta.env.VITE_APP_MOVIES_API_IMG_URL + poster_path}
+						$width="70%"
+					/>
 				</S.Div_TextArea>
 			</S.Div_BisectionArea>
 		</AlignContainer>
