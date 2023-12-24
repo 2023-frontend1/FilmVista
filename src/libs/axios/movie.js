@@ -25,7 +25,6 @@ const getMovieOne = async (movieId) => {
  * @description query 값을 기준으로, 관련 영화 목록을 가져옵니다.
  */
 const getMoviesSearching = async (page, query) => {
-	console.log(query);
 	const response = await axiosMovieInstance.get('/search/movie', {
 		params: { page, query },
 	});
