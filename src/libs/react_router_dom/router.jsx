@@ -13,7 +13,7 @@ const router = createBrowserRouter([
 				element: <DetailPage />,
 			},
 			{
-				path: '/:sortMethod',
+				path: '/:filter',
 				element: <BoardPage />,
 			},
 		],

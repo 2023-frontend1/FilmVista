@@ -5,8 +5,8 @@ import PreviewList from './components/preview_list';
 
 const HomePage = () => {
 	const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteMovieData({
-		sortMethod: 'popular',
-		paramsArr: [],
+		filter: 'popular',
+		paramsArr: ['popular'],
 	});
 
 	if (isLoading) {

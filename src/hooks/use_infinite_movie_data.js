@@ -2,11 +2,11 @@ import { useInfiniteQuery } from 'react-query';
 import movies from '../constants/query_keys/movies';
 import moviesFetchFn from '../libs/axios/movie';
 
-const useInfiniteMovieData = ({ sortMethod, paramsArr }) => {
+const useInfiniteMovieData = ({ filter, paramsArr }) => {
 	return useInfiniteQuery({
-		queryKey: movies[sortMethod],
+		queryKey: movies[filter],
 		queryFn: ({ pageParam = 1 }) =>
-			moviesFetchFn[sortMethod](pageParam, ...paramsArr),
+			moviesFetchFn[filter](pageParam, ...paramsArr),
 		getNextPageParam: (lastPage, allPosts) => {
 			return lastPage.page !== allPosts[0].total_pages && lastPage.page + 1;
 		},
