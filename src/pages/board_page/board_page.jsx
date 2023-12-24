@@ -1,7 +1,12 @@
 import InfiniteScroll from 'react-infinite-scroller';
 import { useParams, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { AlignContainer, TopButton } from '../../components/@index';
+import {
+	AlignContainer,
+	InfiniteList,
+	PostCard,
+	TopButton,
+} from '../../components/@index';
 import pageNames from '../../constants/texts/page_names';
 import useInfiniteMovieData from '../../hooks/use-infinite-movie-data';
 import {
@@ -10,7 +15,6 @@ import {
 	fontSize,
 	fontWeight,
 } from '../../styles/themes/@index';
-import { PostCardList, SkeletonList } from './components/@index';
 
 /**
  * /**
@@ -47,21 +51,13 @@ const BoardPage = () => {
 				<br />
 				<S.H1_CategoryText>{pageNames[filter]}</S.H1_CategoryText>
 				<br />
-				<S.Div_ListContainer>
-					{isLoading ? (
-						<SkeletonList />
-					) : (
-						<InfiniteScroll
-							hasMore={hasNextPage}
-							loadMore={() => fetchNextPage()}
-						>
-							<S.Div_ListContainer>
-								<PostCardList data={data} />
-								<TopButton />
-							</S.Div_ListContainer>
-						</InfiniteScroll>
-					)}
-				</S.Div_ListContainer>
+
+				<InfiniteScroll hasMore={hasNextPage} loadMore={() => fetchNextPage()}>
+					<S.Div_ListContainer>
+						<InfiniteList data={data} renderComponent={PostCard} />
+					</S.Div_ListContainer>
+					<TopButton />
+				</InfiniteScroll>
 			</AlignContainer>
 		</>
 	);

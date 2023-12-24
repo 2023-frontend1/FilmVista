@@ -1,48 +1,49 @@
 import styled from 'styled-components';
-import Poster from '../../../components/poster';
 import {
 	color,
 	flexAlign,
 	fontSize,
 	fontWeight,
 } from '../../../styles/themes/@index';
+import Poster from '../../poster';
 /**
- * /**
  * @component
- * @param {string} posterPath 영화 포스터 url
  * @param {string} title 영화제목
+ * @param {string} poster_path 영화 포스터 url
  * @param {string} overview 영화내용 설명
  * @param {string} popularity 인기지수
- * @param {string} voteAverage 평점
- * @param {string} voteCount 투표수
- * @param {string} releaseDate 개봉일
+ * @param {string} vote_average 평점
+ * @param {string} vote_count 투표수
+ * @param {string} release_date 개봉일
  * @returns {JSX.Element}
  *
  * @description
- * - fetching 된데데이터를 프롭스로 전달 받아서 하나의 posterCard가되는 컴포넌트
+ * - fetching 된 데이터를 props로 전달받아서 하나의 posterCard가 되는 컴포넌트
  */
 
 const PosterCard = ({
-	posterPath,
+	poster_path,
 	title,
-	overview = '🚨 미리보기가 없습니다.',
+	overview = '-',
 	popularity,
-	voteAverage,
-	voteCount,
-	releaseDate,
-	...rest
+	vote_average,
+	vote_count,
+	release_date,
 }) => {
 	return (
-		<S.Div_MainWrapper {...rest}>
-			<Poster src={posterPath} $width="16rem" />
+		<S.Div_MainWrapper>
+			<Poster
+				src={import.meta.env.VITE_APP_MOVIES_API_IMG_URL + poster_path}
+				$width="16rem"
+			/>
 			<S.Div_InfoWrapper>
 				<S.H1_Title>{title}</S.H1_Title>
 				<S.P_Content>{overview}</S.P_Content>
 				<S.P_AdditionalInfo>🔥 인기지수: {popularity}</S.P_AdditionalInfo>
 				<S.P_AdditionalInfo>
-					👍 평점 / 투표수 : {voteAverage} / {voteCount}
+					👍 평점 / 투표수 : {vote_average} / {vote_count}
 				</S.P_AdditionalInfo>
-				<S.P_AdditionalInfo>📅 개봉일 : {releaseDate}</S.P_AdditionalInfo>
+				<S.P_AdditionalInfo>📅 개봉일 : {release_date}</S.P_AdditionalInfo>
 			</S.Div_InfoWrapper>
 		</S.Div_MainWrapper>
 	);
