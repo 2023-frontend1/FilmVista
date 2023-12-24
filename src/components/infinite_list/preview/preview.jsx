@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import {
 	color,
@@ -16,9 +17,9 @@ const Preview = ({
 	vote_count,
 	release_date,
 	poster_path,
-	onClickDetailBtn,
 	order,
 }) => {
+	const navigate = useNavigate();
 	return (
 		<AlignContainer
 			$compressibility="15%"
@@ -35,7 +36,7 @@ const Preview = ({
 						</S.P_AdditionalInfo>
 						<S.P_AdditionalInfo>📅 개봉일 : {release_date}</S.P_AdditionalInfo>
 					</S.Sec_AdditionalInfoContainer>
-					<Button onClick={() => onClickDetailBtn(id)}>
+					<Button onClick={() => navigate(`/detail/${id}`)}>
 						자세히 보러가기 〉
 					</Button>
 				</S.Div_TextArea>
