@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { color } from '../styles/themes/@index';
+import { color } from '../../styles/themes/@index';
 import Header from './header';
 import SideBar from './sidebar';
 
