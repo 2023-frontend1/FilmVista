@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import {
 	color,
@@ -22,6 +23,7 @@ import Poster from '../../poster';
  */
 
 const PosterCard = ({
+	id,
 	poster_path,
 	title,
 	overview = '-',
@@ -30,8 +32,13 @@ const PosterCard = ({
 	vote_count,
 	release_date,
 }) => {
+	const navigate = useNavigate();
 	return (
-		<S.Div_MainWrapper>
+		<S.Div_MainWrapper
+			onClick={() => {
+				navigate(`/detail/${id}`);
+			}}
+		>
 			<Poster
 				src={import.meta.env.VITE_APP_MOVIES_API_IMG_URL + poster_path}
 				$width="16rem"
