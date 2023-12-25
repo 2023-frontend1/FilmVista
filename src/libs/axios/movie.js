@@ -6,7 +6,7 @@ import axiosMovieInstance from './base';
  * @description 인기순으로 정렬된 20개의 영화 목록을 가져옵니다.
  */
 const getMoviesByFilter = async (page, filter) => {
-	const response = await axiosMovieInstance.get(`/movie/${filter}`, {
+	const response = await axiosMovieInstance().get(`/movie/${filter}`, {
 		params: { page },
 	});
 	return response.data;
