@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { RouterProvider } from 'react-router-dom';
 import router from './libs/react_router_dom/router';
 import GlobalStyles from './styles/global_styles.jsx';
-
+import { ChakraProvider } from '@chakra-ui/react';
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
@@ -18,9 +18,11 @@ const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<QueryClientProvider client={queryClient}>
-			<GlobalStyles />
-			<RouterProvider router={router} />
-			<ReactQueryDevtools initialIsOpen={false} />
+			<ChakraProvider>
+				<GlobalStyles />
+				<RouterProvider router={router} />
+				<ReactQueryDevtools initialIsOpen={false} />
+			</ChakraProvider>
 		</QueryClientProvider>
 	</React.StrictMode>
 );
