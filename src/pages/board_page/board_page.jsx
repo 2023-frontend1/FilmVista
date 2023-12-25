@@ -1,7 +1,12 @@
 import InfiniteScroll from 'react-infinite-scroller';
 import { useParams, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { AlignContainer, TopButton } from '../../components/@index';
+import {
+	AlignContainer,
+	InfiniteList,
+	PostCard,
+	TopButton,
+} from '../../components/@index';
 import pageNames from '../../constants/texts/page_names';
 import useInfiniteMovieData from '../../hooks/use_infinite_movie_data';
 import {
@@ -10,7 +15,6 @@ import {
 	fontSize,
 	fontWeight,
 } from '../../styles/themes/@index';
-import { PostCardList, SkeletonList } from './components/@index';
 
 /**
  * /**
@@ -24,34 +28,36 @@ import { PostCardList, SkeletonList } from './components/@index';
  *
  */
 const BoardPage = () => {
-	const { sortMethod } = useParams();
+	const { filter } = useParams();
 	const [searchParam] = useSearchParams();
+	const subject = searchParam.get('subject');
+
+	/**
+	 * @description
+	 * - 데이터 패칭 함수로 넘길 params 를 배열형태로 가공합니다.
+	 * - 'subject' 값이 있다면(filter='search), 그 값과 filter 를 배열에 담습니다.
+	 * - 'subject' 값이 없다면, filter(어떤 영화데이터 목록을 가져올지 기준) 만 배열에 담습니다.
+	 */
+	const paramsArr = subject ? [subject, filter] : [filter];
 
 	const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteMovieData({
-		sortMethod,
-		paramsArr: [searchParam.get('subject')],
+		filter,
+		paramsArr,
 	});
+
 	return (
 		<>
 			<AlignContainer $compressibility="10%">
 				<br />
-				<S.H1_CategoryText>{pageNames[sortMethod]}</S.H1_CategoryText>
+				<S.H1_CategoryText>{pageNames[filter]}</S.H1_CategoryText>
 				<br />
-				<S.Div_ListContainer>
-					{isLoading ? (
-						<SkeletonList />
-					) : (
-						<InfiniteScroll
-							hasMore={hasNextPage}
-							loadMore={() => fetchNextPage()}
-						>
-							<S.Div_ListContainer>
-								<PostCardList data={data} />
-								<TopButton />
-							</S.Div_ListContainer>
-						</InfiniteScroll>
-					)}
-				</S.Div_ListContainer>
+
+				<InfiniteScroll hasMore={hasNextPage} loadMore={() => fetchNextPage()}>
+					<S.Div_ListContainer>
+						<InfiniteList data={data} renderComponent={PostCard} />
+					</S.Div_ListContainer>
+					<TopButton />
+				</InfiniteScroll>
 			</AlignContainer>
 		</>
 	);
