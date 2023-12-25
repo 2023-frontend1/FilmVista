@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { AlignContainer, TopButton } from '../../components/@index';
 import pageNames from '../../constants/texts/page_names';
-import useInfiniteMovieData from '../../hooks/use-infinite-movie-data';
+import useInfiniteMovieData from '../../hooks/use_infinite_movie_data';
 import {
 	color,
 	flexAlign,

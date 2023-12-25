@@ -5,7 +5,7 @@ import axiosMovieInstance from './base';
  * @description 인기순으로 정렬된 20개의 영화 목록을 가져옵니다.
  */
 const getMoviesPopular = async (page) => {
-	const response = await axiosMovieInstance.get('/movie/popular', {
+	const response = await axiosMovieInstance().get('/movie/popular', {
 		params: { page },
 	});
 	return response.data;
@@ -16,7 +16,7 @@ const getMoviesPopular = async (page) => {
  * @description 현재 상영 중인 20개의 영화 목록을 가져옵니다.
  */
 const getMoviesNowPlaying = async (page) => {
-	const response = await axiosMovieInstance.get('/movie/now_playing', {
+	const response = await axiosMovieInstance().get('/movie/now_playing', {
 		params: { page },
 	});
 	return response.data;
@@ -27,7 +27,7 @@ const getMoviesNowPlaying = async (page) => {
  * @description 상영 대기 중인 20개의 영화를 배열로 반환합니다.
  */
 const getMoviesUpcoming = async (page) => {
-	const response = await axiosMovieInstance.get('/movie/upcoming', {
+	const response = await axiosMovieInstance().get('/movie/upcoming', {
 		params: { page },
 	});
 	return response.data;
@@ -38,7 +38,7 @@ const getMoviesUpcoming = async (page) => {
  * @description 등급별로 정렬된 20개의 영화 목록을 가져옵니다.
  */
 const getMoviesTopRated = async (page) => {
-	const response = await axiosMovieInstance.get('/movie/top_rated', {
+	const response = await axiosMovieInstance().get('/movie/top_rated', {
 		params: { page },
 	});
 	return response.data;
@@ -49,7 +49,7 @@ const getMoviesTopRated = async (page) => {
  * @description id 를 기준으로 영화의 세부사항을 가져옵니다.
  */
 const getMovieOne = async (movieId) => {
-	const response = await axiosMovieInstance.get(`/movie/${movieId}`);
+	const response = await axiosMovieInstance().get(`/movie/${movieId}`);
 	return response.data;
 };
 /**
@@ -58,7 +58,7 @@ const getMovieOne = async (movieId) => {
  * @description query 값을 기준으로, 관련 영화 목록을 가져옵니다.
  */
 const getMoviesSearching = async (page, query) => {
-	const response = await axiosMovieInstance.get('/search/movie', {
+	const response = await axiosMovieInstance().get('/search/movie', {
 		params: { page, query },
 	});
 	return response.data;
