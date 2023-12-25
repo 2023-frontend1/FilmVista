@@ -7,15 +7,15 @@ import {
 	PostCard,
 	Spacer,
 	TopButton,
-} from '../../components/@index';
-import pageNames from '../../constants/texts/page_names';
-import useInfiniteMovieData from '../../hooks/use_infinite_movie_data';
+} from '../components/@index';
+import pageNames from '../constants/texts/page_names';
+import useInfiniteMovieData from '../hooks/use_infinite_movie_data';
 import {
 	color,
 	flexAlign,
 	fontSize,
 	fontWeight,
-} from '../../styles/themes/@index';
+} from '../styles/themes/@index';
 
 /**
  * /**
