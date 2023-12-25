@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { color, flexAlign, fontWeight } from '../../styles/themes/@index';
-import Button from '../button';
-/**
+import { Button } from '../@index';
 
+/**
  * @description
  * 상단에 영화제목을 검색하면 해당영화를 찾아주는 검색창 컴포넌트입니다.
  */

@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
-import { AlignContainer, Poster } from '../components/@index';
+import { AlignContainer, Poster, Spacer } from '../components/@index';
 import movies from '../constants/query_keys/movies';
 import moviesFetchFn from '../libs/axios/movie';
 import { color, flexAlign } from '../styles/themes/@index';
@@ -32,12 +32,12 @@ const DetailPage = () => {
 			>
 				<S.Div_ContentContainer>
 					<Poster
-						$width="40rem"
+						$width="35rem"
 						src={import.meta.env.VITE_APP_MOVIES_API_IMG_URL + data.poster_path}
 					/>
 					<S.Div_TextArea>
 						<H1_Title>{data.title}</H1_Title>
-						<br />
+						<Spacer $height="30px" />
 						<h2>개요</h2>
 						<S.P_Overview>
 							{data.overview ? (
@@ -46,7 +46,7 @@ const DetailPage = () => {
 								<p>아쉽지만.. 미리보기가 없습니다. 영화관에서 확인하세요^^</p>
 							)}
 						</S.P_Overview>
-						<br />
+						<Spacer $height="15px" />
 						<h3>부가정보</h3>
 						<S.Sec_AdditionalInfo>
 							<p>
@@ -75,33 +75,30 @@ const Img_BackgroundImg = styled.img`
 	opacity: 0.4;
 	z-index: 0;
 `;
-
 const Div_ContentContainer = styled.div`
 	width: 100%;
 	height: 100%;
-
 	${flexAlign.alignCenter}
 	${flexAlign.justifyBetween}
 `;
 
 const Div_TextArea = styled.div`
 	color: ${color.gray[900]};
-	width: 60rem;
-	height: 53rem;
+	width: 55rem;
+	height: 46rem;
 	${flexAlign.directionColumn}
+	${flexAlign.justifyCenter}
 	word-break: keep-all;
-	gap: 1rem;
 `;
 
 const H1_Title = styled.h1`
-	height: 25%;
+	max-height: 20%;
 `;
 const P_Overview = styled.p`
-	height: 70%;
+	max-height: 60%;
 `;
-
 const Sec_AdditionalInfo = styled.section`
-	height: 30%;
+	max-height: 15%;
 `;
 
 const S = {

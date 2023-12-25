@@ -5,16 +5,17 @@ import {
 	AlignContainer,
 	InfiniteList,
 	PostCard,
+	Spacer,
 	TopButton,
-} from '../../components/@index';
-import pageNames from '../../constants/texts/page_names';
-import useInfiniteMovieData from '../../hooks/use_infinite_movie_data';
+} from '../components/@index';
+import pageNames from '../constants/texts/page_names';
+import useInfiniteMovieData from '../hooks/use_infinite_movie_data';
 import {
 	color,
 	flexAlign,
 	fontSize,
 	fontWeight,
-} from '../../styles/themes/@index';
+} from '../styles/themes/@index';
 
 /**
  * /**
@@ -48,10 +49,9 @@ const BoardPage = () => {
 	return (
 		<>
 			<AlignContainer $compressibility="10%">
-				<br />
+				<Spacer $height="10px" />
 				<S.H1_CategoryText>{pageNames[filter]}</S.H1_CategoryText>
-				<br />
-
+				<Spacer $height="12px" />
 				<InfiniteScroll hasMore={hasNextPage} loadMore={() => fetchNextPage()}>
 					<S.Div_ListContainer>
 						<InfiniteList data={data} renderComponent={PostCard} />

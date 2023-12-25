@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { color, flexAlign } from '../../styles/themes/@index';
-import SearchArea from './search_area';
+import { SearchArea } from './@index';
 
 /**
-
+ * @param {string} $bgColor 헤더 배경 색상
+ * @param {string} $color 헤더 내부 요소 색생
+ * @param {$borderColor} $borderColor 헤더 경계선 색상
  * @description
  * 상단에 사이트 이름, 입력창을 담을 header 입니다.
  */
