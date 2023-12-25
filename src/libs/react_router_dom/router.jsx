@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Layout from '../../components/layout';
+import Layout from '../../components/layout/layout';
 import { BoardPage, DetailPage, HomePage } from '../../pages/@index';
 
 const router = createBrowserRouter([
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
 				element: <DetailPage />,
 			},
 			{
-				path: '/:sortMethod',
+				path: '/:filter',
 				element: <BoardPage />,
 			},
 		],

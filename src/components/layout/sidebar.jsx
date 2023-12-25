@@ -1,14 +1,20 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import sidebarCategory from '../constants/texts/sidebar_category';
+import sidebarCategory from '../../constants/texts/sidebar_category';
 import {
 	color,
 	flexAlign,
 	fontSize,
 	fontWeight,
-} from '../styles/themes/@index';
+} from '../../styles/themes/@index';
 
 /**
+ * @component
+ * @param {string} $bgColor 사이드바 배경색상
+ * @param {string} $color 사이드바 내부요소 색상
+ * @param {string} $borderColor 사이드바 경계선 색상
+ * @param {string} $width 사이드바 너비
+ *
  * @description
  * 좌측에 navigation function 이 부여된 버튼리스트를 담을 사이드바 입니다.
  */
@@ -16,11 +22,12 @@ const SideBar = ({
 	$bgColor = color.black[100],
 	$color = color.gray[900],
 	$borderColor = color.black[900],
+	$width = '12rem',
 }) => {
 	const navigate = useNavigate();
 
 	return (
-		<S.Ul_CategoryList {...{ $bgColor, $color, $borderColor }}>
+		<S.Ul_CategoryList {...{ $bgColor, $color, $borderColor, $width }}>
 			{Object.entries(sidebarCategory).map((cate, idx) => {
 				return (
 					<S.Li_Category
@@ -45,7 +52,7 @@ const Ul_CategoryList = styled.ul`
 	top: 0%;
 	z-index: 10000;
 
-	width: 12rem;
+	width: ${({ $width }) => $width};
 	height: 100vh;
 
 	color: ${({ $color }) => $color};
