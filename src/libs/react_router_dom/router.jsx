@@ -1,6 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../../components/layout/layout';
-import { BoardPage, DetailPage, HomePage } from '../../pages/@index';
+import {
+	BoardPage,
+	DetailPage,
+	HomePage,
+	SearchPage,
+} from '../../pages/@index';
 
 const router = createBrowserRouter([
 	{
@@ -11,6 +16,10 @@ const router = createBrowserRouter([
 			{
 				path: '/detail/:movieId',
 				element: <DetailPage />,
+			},
+			{
+				path: '/search',
+				element: <SearchPage />,
 			},
 			{
 				path: '/:filter',

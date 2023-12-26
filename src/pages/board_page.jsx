@@ -1,5 +1,5 @@
 import InfiniteScroll from 'react-infinite-scroller';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import {
 	AlignContainer,
@@ -25,23 +25,12 @@ import {
  * @description
  * - fetching 된데데이터를 PosterCard에 각각뿌려주어서
  * 영화포스터와 제목,내용,별점이 보여지는 페이지컴포넌트입니다.
- *
- *
  */
 const BoardPage = () => {
 	const { filter } = useParams();
-	const [searchParam] = useSearchParams();
-	const subject = searchParam.get('subject');
+	const paramsArr = [filter];
 
-	/**
-	 * @description
-	 * - 데이터 패칭 함수로 넘길 params 를 배열형태로 가공합니다.
-	 * - 'subject' 값이 있다면(filter='search), 그 값과 filter 를 배열에 담습니다.
-	 * - 'subject' 값이 없다면, filter(어떤 영화데이터 목록을 가져올지 기준) 만 배열에 담습니다.
-	 */
-	const paramsArr = subject ? [subject, filter] : [filter];
-
-	const { data, fetchNextPage, isLoading, hasNextPage } = useInfiniteMovieData({
+	const { data, fetchNextPage, hasNextPage } = useInfiniteMovieData({
 		filter,
 		paramsArr,
 	});
