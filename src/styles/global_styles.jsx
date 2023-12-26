@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
         font-size: 62.5%;
         font-weight: ${fontWeight.regular};
         background-color: ${color.black[100]};
+        color: ${color.gray[900]}
     }
 
     ul, li {
